@@ -1,51 +1,70 @@
-<h1 align="center">RedM TypeScript Boilerplate</h1>
+<h1 align="center">RedM Utilities</h1>
 
 <p align="center">
-  <i>A TypeScript Boilerplate for RedM, forked from <a target="_blank" href="https://github.com/d0p3t/fivem-ts-boilerplate">FiveM-TS-Boilerplate</a></i>
+  <i>Various gamemode-independent utilities.</i>
   <br>
   <br>
-  <a href="https://github.com/Ascent-Gaming/redm-ts-boilerplate/blob/master/LICENSE">
+  <a href="https://github.com/Ascent-Gaming/redm-utilities/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat" alt="License: MIT">
   </a>
-  <a href="https://github.com/Ascent-Gaming/redm-ts-boilerplate/commits/master">
-    <img src="https://img.shields.io/github/last-commit/Ascent-Gaming/redm-ts-boilerplate.svg?style=flat" alt="Last commit">
+  <a href="https://github.com/Ascent-Gaming/redm-utilities/commits/master">
+    <img src="https://img.shields.io/github/last-commit/Ascent-Gaming/redm-utilities.svg?style=flat" alt="Last commit">
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/workflow/status/Ascent-Gaming/redm-ts-boilerplate/Node.js%20CI" alt="Workflow">
+    <img src="https://img.shields.io/github/workflow/status/Ascent-Gaming/redm-utilities/Node.js%20CI" alt="Workflow">
   </a>
 </p>
 
-This is a boilerplate for creating resources in TypeScript, for RedM. From its fork, its dependencies have been upgraded and the `fxmanifest.lua` updated to give `rdr3` compatability.
+## Installation
 
-***By using this boilerplate you agree to the following:***
-> I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.
+1. `clone` or download and copy this repository into your `./resources/` folder.
 
-If you wish to take advantage of TypeScript `4.x` features in FiveM, this boilerplate maybe suitable for you. I'm going to assume you know how to make that change yourself. *Hint, it includes the `fxmanifest.lua` file.*
+2. Assuming you have already install Yarn package manager, run `yarn install` from the root of the created directory.
+
+3. Configure `config.json` to fit your use-case and build the package using `yarn run build`.
 
 ## Usage
-1. Clone repository into your `resources/[local]` folder. Or create a **Template** repository using GitHub.
-2. `yarn install` the dependencies.
-3. Start developing!
 
-### Development
-Use `yarn run watch` to watch files during development.
+The following outlines a few of the key features offered by this resource. All features can be configured through `config.json` file, under the `utilities` object; or used as their usage describes.
 
-### Production
-Build your production ready code with `yarn run build`.
+### `clearMap`
 
-This will build the client and server script with the `--mode production` flag.
+> Default value: `true`
 
-### Automatic Builds (Optional)
-The `fxmanifest.lua` is not setup to automatically build upon first FXServer start. If you'd like to setup automatic builds you must add the following to your `fxmanifest.lua`.
+When set to `true`, the entire *Red Dead Redemption 3* map will be uncovered.
 
-```lua
-dependency 'yarn'
-dependency 'webpack'
+When set to `false`, the map will be uncovered as the player transverses the world; as shown in single-player.
 
-webpack_config 'webpack.config.js'
+### `logLevel`
+
+Provides two functions for use on the `client` and `server` that attempt to make logging more developer-friendly.
+
+The two functions are: `utilities:logClient` and `utilities:logServer` which can be called using `emit(...)` or by using the Lua/C# alternative.
+
+Both functions expect the same `LogEvent` object used to format a log message.
+
+```TypeScript
+type LogEvent = {
+  /**
+   * A string that can be any one of the following:
+   *  - "debug"
+   *  - "info"
+   *  - "warn"
+   *  - "error"
+   */
+  level: string,
+  /**
+   * The resource from which a log is originating, defaults to "client" or "server" depending on the function called.
+   */
+  resource: string,
+  /**
+   * The actual log text you wish to output to either the "client" or "server" console.
+   */
+  output: string
+}
 ```
 
-However, due to the speed performance of the pre-packaged webpack/yarn of cfx-server-data, we suggest you don't do this and build manually as described previously ("Production").
+The `config.json` file provides a `logLevel` field which accepts the same values described above (under `level`). You can use this to *prune* certain log messages while in production or development environments. Both the `client` and `server` can be controlled independently.
 
 ## License
 This product is MIT licensed. Please make sure you give credit and include this license in your product.
