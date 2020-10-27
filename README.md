@@ -17,11 +17,11 @@
 
 ## Installation
 
-1. `clone` or download and copy this repository into your `./resources/` folder.
-
-2. Assuming you have already install Yarn package manager, run `yarn install` from the root of the created directory.
-
-3. Configure `config.json` to fit your use-case and build the package using `yarn run build`.
+1. `clone` or download this repository into your server's `./resources/` directory.
+2. Adjust `config.json` to meet your needs.
+3. Aftering ensuring its installed, run `yarn install` in this resources's directory.
+4. Build the resource using `yarn build`.
+5. `ensure` this resource *after* any of its dependencies.
 
 ## Usage
 
