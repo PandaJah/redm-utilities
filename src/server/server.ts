@@ -9,7 +9,7 @@ on("utilities:logServer", (event: LogEvent) => {
 
   if (configLevel <= logLevel) {
     console.log(chalk.redBright(
-      chalk.blueBright(chalk.bold(`[${event.title || "Client"}]:`)),
+      chalk.blueBright(chalk.bold(`[${event.title || "Server"}]:`)),
       event.output
     ))
   }
