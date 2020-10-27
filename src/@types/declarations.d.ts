@@ -7,6 +7,6 @@
 
 type LogEvent = {
   level: string,
-  title: string,
+  title?: string,
   output: string
 }
