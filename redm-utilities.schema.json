@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "software.locktech.redm-utilities.schema",
+  "title": "RedM Utilities",
+  "type": "object",
+  "definitions": {
+    "logLevel": {
+      "type": "string",
+      "enum": ["debug", "info", "warn", "error"]
+    }
+  },
+  "allOf": [{ "$ref": "https://raw.githubusercontent.com/Ascent-Gaming/redm-ts-boilerplate/config.schema/redm-ts-boilerplate.schema.json" }],
+  "properties": {
+    "utilities": {
+      "title": "Utilities",
+      "description": "Configuration specific to the Utilities resource.",
+      "type": "object",
+      "required": ["clearMap", "logLevel"],
+      "properties": {
+        "clearMap": {
+          "title": "Clear Map",
+          "description": "Setting this to TRUE will remove the Fog-of-War from the RDR3 map.",
+          "type": "boolean"
+        },
+        "logLevel": {
+          "title": "Log Level",
+          "description": "Log messages equal to and above what you specify here will be shown to printed in the respective console.",
+          "type": "object",
+          "properties": {
+            "client": {
+              "$ref": "#/definitions/logLevel"
+            },
+            "server": {
+              "$ref": "#/definitions/logLevel"
+            }
+          },
+          "required": ["client", "server"]
+        }
+      }
+    }
+  },
+  "required": [
+    "utilities"
+  ]
+}
