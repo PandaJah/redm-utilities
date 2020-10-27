@@ -54,9 +54,11 @@ type LogEvent = {
    */
   level: string,
   /**
-   * The resource from which a log is originating, defaults to "client" or "server" depending on the function called.
+   * An optional title used to broadly describe where a log is taking place.
+   *
+   * This can be the resource's name, a custom string that has meaning to you and your developers, or left blank where "client" or "server" will be substituted.
    */
-  resource: string,
+  title: string,
   /**
    * The actual log text you wish to output to either the "client" or "server" console.
    */
