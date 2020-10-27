@@ -1,6 +1,13 @@
 {
   "resource": {
-    "name": "TypeScript Template",
+    "name": "RedM Utilities",
     "version": "0.0.1"
+  },
+  "utilities": {
+    "clearMap": true,
+    "logLevel": {
+      "client": "debug",
+      "server": "debug"
+    }
   }
 }

@@ -4,3 +4,9 @@
  * 
  * A common example would be `Events` passed between the client and server.
  */
+
+type LogEvent = {
+  level: string,
+  title?: string,
+  output: string
+}
