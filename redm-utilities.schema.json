@@ -35,6 +35,10 @@
             }
           },
           "required": ["client", "server"]
+        },
+        "hideHud": {
+          "title": "Hide HUD",
+          "type": "boolean"
         }
       }
     }
