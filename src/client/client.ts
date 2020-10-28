@@ -3,8 +3,10 @@ import { logLevelFromStr } from "../util"
 import * as Config from "../../config.json"
 
 on("onClientResourceStart", () => {
-  // Show or continue hiding the RDR3 map
+  // Show or continue hiding FoW
   SetMinimapHideFow(Config.utilities.clearMap)
+  // Show or Hide the player's HUD
+  DisplayHud(Config.utilities.hideHud)
 })
 
 on("utilities:logClient", (event: LogEvent) => {

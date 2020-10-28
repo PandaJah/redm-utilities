@@ -9,6 +9,7 @@
     "logLevel": {
       "client": "debug",
       "server": "debug"
-    }
+    },
+    "hideHud": true
   }
 }
